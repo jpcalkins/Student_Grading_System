@@ -68,16 +68,6 @@ function printTable($mysqli, $query){
     echo "</table>\n";
     echo "<br/><br/><br/>";
 }
-function dropdownBox(){
-    $dropdown = '<form action="DisplayInventories.php" method="post"><select name="storeName">';
-    $query = 'SELECT storeName FROM Stores';
-    $result = $mysqli->query($query);
-    foreach($result as $row){
-        $dropdown .= "\r\n<option value='{$row['storeName']}'>{$row['storeName']}</option>";
-
-    }
-    $dropdown .= "\r\n</select><input type='submit'></form>";
-}
 function back(){
     echo '<br><button onclick="history.go(-1);">Back </button>';
 }

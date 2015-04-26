@@ -26,7 +26,7 @@ function generateSalt(){
 function addUser($userName, $userId, $role, $password){
     $salt = generateSalt();
     $password = hashPass($password, $salt);
-    $query = 'INSERT INTO Users (userName, userId, role, salt, passwordHash) VALUES
-                  ("'.$userName.'", "'.$userId.'", "'.$role.'", "'.$salt.'", "'.$password.'")';
+    $query = "INSERT INTO Users (userName, userId, role, salt, passwordHash) VALUES
+                  ('{$userName}', '{$userId}', '{$role}', '{$salt}', '{$password}')";
     multiQuery(sqlLogin(), $query);
 }

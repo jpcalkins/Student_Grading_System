@@ -18,7 +18,7 @@ if ($newPass != $newPass2 || $newPass == $oldPass){
     exit(0);
 }
 if($newPass == $newPass2){
-    $query = 'SELECT salt, passwordHash FROM Users WHERE userId = "'.$userId.'"';
+    $query = "SELECT salt, passwordHash FROM Users WHERE userId ='{$userId}'";
     $mysqli = sqlLogin();
     $result = $mysqli->query($query);
     $row = $result->fetch_row();
@@ -26,7 +26,7 @@ if($newPass == $newPass2){
     $storedPass = $row[1];
     if(hashPass($oldPass, $salt) == $storedPass){
         $salt = generateSalt();
-        $query = 'UPDATE Users SET salt="'.$salt.'", passwordHash="'.hashPass($newPass, $salt).'" WHERE userId="'.$userId.'"';
+        $query = "UPDATE Users SET salt='{$salt}', passwordHash='".hashPass($newPass, $salt)."' WHERE userId='{$userId}'";
         multiQuery($mysqli, $query);
     }
 }
