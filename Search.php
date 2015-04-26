@@ -18,7 +18,13 @@ if(count($_POST) == 0){
     home();
 }else{
     $searchText = $_POST['searchText'];
-    $query = 'SELECT name FROM Instructors WHERE name LIKE "%'.$searchText.'%" UNION ALL SELECT name FROM Students WHERE name LIKE "%'.$searchText.'%"';
+    $query = 'SELECT userId, name, role
+FROM Instructors NATURAL JOIN Users
+WHERE name LIKE "%'.$searchText.'%"
+UNION ALL
+SELECT userId, name, role
+FROM Students NATURAL JOIN Users
+WHERE name LIKE "%'.$searchText.'%"';
     printTable(sqlLogin(), $query);
     echo '<form action="Search.php" method="post">
             Enter part or all of name to search for:<br>
