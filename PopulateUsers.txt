@@ -1,0 +1,35 @@
+INSERT INTO Users (userName, userId, role, salt, passwordHash) VALUES
+	('r2d2',        100, 'admin', 'a2a712f3c9d89af91fe34c6b0d20eddd', 'aca2c517850ea2d1f9883913eda39390a6d9f1fb5d94448b0293980ed1e5a1b6'),
+	('c3po',        101, 'admin', '679a4e26587ad06c34bce7348be60d15', '4903c2b6bd66562b669b613d18904b4afb616751690bbebf4ff8084fb9e4b9e8');
+
+INSERT INTO Users (userName, userId, role, salt, passwordHash) VALUES
+	('hancockj',    2001, 'instructor', 'a869d3abdb5affd4f51feea7f14539fe', '30c6d6ab5289fba0cd1065c93eb41d90ae8f187da902b959114f2288cf5cf28b'),
+	('jeffersont',  2002, 'instructor', '8df9f21aba0febeac920b5c60bc3f942', 'c0862a01d35405765da4847a8fc38a12b03ed7b996863c74ef1e800d88716db3'),
+	('harrisonb',   2003, 'instructor', 'dee6518ac2e864164eb4bf8d5e596986', '0f6f2b1eff9f7fc111099a367da701fef512855034b2d21a36b0b1906dda2a0c'),
+	('franklinb',   2004, 'instructor', 'dd40844d9fe6bf53659ebf6af900da6b', '992fea085ab064934038440873dffd65a7a4b41e59f4f9381f15b5e9d62f5c30'),
+	('morrisr',     2005, 'instructor', '69883364248a7e317ce5dee405868842', '7ada8c2bf0a83b33b9dc38cae14cd0f9d8fa0c948064fab556a79bd00240461f'),
+	('adamss',      2006, 'instructor', 'a1eee137a2fd1d778bc1fa551d00c695', '69b476710131d4d6fde4b52459350f73a38fbec8834633a375b07666b9b25c39'),
+	('linvingstonp', 2007, 'instructor', '2e2d574af60b44bdd3d79cf11a1d6f1a', '77952c2d7a3baab3758bb78d6e9fc37f139192c64aafd08e4a567393b1e40c14'),
+	('madisond',    2008, 'instructor', '33d5e9467a21a75d7877d9a2b72e8816', 'e61dac2874bafa60225bba0709db78dfc4e072b78ae64eae88cbf5dda059fe74');
+
+INSERT INTO Users (userName, userId, role, salt, passwordHash) VALUES
+	('adamsj',     1001, 'student', 'a17503ff54ff758aaf8086a9b0b95b9e', '3b1df52ab5c3ac2f7111bcc821ed0ceeadbf14506770c55105058ad7cf9e9016'),
+	('monroej',    1002, 'student', 'd8b7d8217d90ba66a65b81a2c58f2470', 'c0722fd6f3b56b6a399bbf11c3da42a82c0d234232e238f8aaa749317a8e8232'),
+	('jacksona',   1003, 'student', '9ab5af99ae7a97d71c319e06efa041b6', 'd6c8a2a384a911d255083519b3bc21daf9a6a0b2f4bff295176f0d9de650346a'),
+	('lincolna',   1004, 'student', '6a6ca6baf917d33a751890417113bdad', '87a5ef1e407f7f1e5d74ff35dacfb054b7cdbcd56547577c49427d4f6601a06f'),
+	('bushg',      1005, 'student', '0c8b8532d4f264a26f8902e30808c87a', '901987d69d6b125598826e4570be3d736204832e113014a09cd6b23394fe7d30'),
+	('obamab',     1006, 'student', 'fcd34adaf2bbc3569a269eefeac0e77d', 'd504a3b99cd88883fc56664af7ca634dc9751e6f0d84366064b723673b9bbefe'),
+	('trumanh',    1007, 'student', 'd13f6b24cda4fba34a2cc16a5537b1f4', 'd53d434234e178b0e245b46a127fe949e5673ab4da3e30f957a7bbba9d286056'),
+	('reaganr',    1008, 'student', '2a893073db032021a849c7d012b85518', 'b3bd4596c9acbcb40eaf6465b4e5346dbe1eb087ee10f5a0d70e160d86072557'),
+	('carterj',    1009, 'student', '7604ebecf93933b726d246d87bc7eb24', '0e2b4ab66cba183b410037f82847ca75a200fbeb870f8122143012983f851ba6'),
+	('kennedyj',   1010, 'student', '5f1b57ad3e8c1cdbaaaceda29520c6c1', '85f09dc5ea34195498297592ca577a1b01da4e625d25b26dc142e8fea0e9ddd2'),
+	('pelosin',    1011, 'student', 'e5d8c246c3181c48b0e974604d1325de', '9f124f9012ad5dcb9a8bca86e4f34cbe4cdc82d0ec0b123e8d9feeb9cdb37ba4'),
+	('palins',     1012, 'student', '0ccef282c2fc264861bf3036f9e667d8', '2f7da2aef16379ff55872e99de2739fabad624ebd28b14401a72d1eefab73394'),
+	('ryanp',      1013, 'student', '7dd7e56aaed91a40230887d8472c204c', '856bef069fc042708662e978bea5b93719d4584d2518ed710ba16194c57c7ff8'),
+	('reidh',      1014, 'student', '3c6397e1ab72b85280ee6b544f1684f7', '828db23e9dbcdfd564536c498711edbbede410213487b90c7b65800b2f20dc64'),
+	('mccainj',    1015, 'student', 'f5daf569944c5de872977ea776460dac', 'f7cc8c5d7ca81429d3ff37c75cfe76b39acb29d0172198b03fbf994e135e484c'),
+	('warrene',    1016, 'student', 'fed1b0173cdf6e7a7007812b99aab932', '120f4d528bc435db5936614da45bd8ed4887b926b0046ea4b4dec62413370ef2'),
+	('cainh',      1017, 'student', 'e6eede372b6aa8fed23487d15983c9e8', '8241abe1a53adcb4efeec1c664fe7f57dd36051b4d810fbd3793ae7ac1e7b9c3'),
+	('elmo',       1018, 'student', 'e9ddd73d7f7eea5ab3f0b15ae93ccada', '7761aa1f2a9eb97e7157a8f00cd34cad7f1ce1b7a3abe947a4f2f86d27a405d2'),
+	('yoda',       1019, 'student', 'f0783969d40687f465fea3f97944ba4d', 'b5a42606f3ae1f46c88fbdd5dc64ed809e6000022885dbfb1d2aad55ad21e665'),
+	('mousem',     1020, 'student', 'a079692e422d7e4384e87bc1a0ed917a', '71c1b1f9b6aa8a1a4287ab2ed9b971c9051a1d5c703937ea9990bcb55abc891a');

@@ -1,0 +1,84 @@
+CREATE TABLE Users
+(
+	userId INT PRIMARY KEY,
+	userName VARCHAR(30) UNIQUE NOT NULL,
+	role ENUM('admin', 'student', 'instructor'),
+	salt VARCHAR(40),
+	passwordHash VARCHAR(256)
+);
+CREATE TABLE Students
+(
+	name VARCHAR(30) NOT NULL,
+	userId INT PRIMARY KEY,
+	major VARCHAR(20),
+	year INT,
+	FOREIGN KEY (userId) REFERENCES Users (userId)
+);
+CREATE TABLE Instructors
+(
+	name VARCHAR(30) NOT NULL,
+	userId INT PRIMARY KEY,
+	department VARCHAR(20),
+	tenure BOOLEAN NOT NULL,
+	FOREIGN KEY (userId) REFERENCES Users (userId)
+);
+CREATE TABLE Classes
+(
+	classId INT PRIMARY KEY,
+	className VARCHAR(20),
+	classNum VARCHAR(20),
+	sectionNum INT NOT NULL,
+	semester ENUM('fall', 'spring', 'summer'),
+	year INT,
+	creditHours INT,
+	maxEnrollment INT,
+	open BOOLEAN NOT NULL,
+	finished BOOLEAN NOT NULL,
+	INDEX(classNum)
+);
+CREATE TABLE Teaches
+(
+	userId INT,
+	classId INT,
+	FOREIGN KEY (userId) REFERENCES Users (userId),
+	FOREIGN KEY (classId) REFERENCES Classes (classId),
+	PRIMARY KEY (userId, classId)
+);
+CREATE TABLE Prerequisites
+(
+	requiringClassNum VARCHAR(20),
+	requiredClassNum VARCHAR(20),
+	FOREIGN KEY (requiringClassNum) REFERENCES Classes (classNum),
+	FOREIGN KEY (requiredClassNum) REFERENCES Classes (classNum),
+	PRIMARY KEY (requiringClassNum, requiredClassNum)
+);
+CREATE TABLE Takes
+(
+	userId INT,
+	classId INT,
+	percent FLOAT(5,2),
+	FOREIGN KEY (userId) REFERENCES Users (userId),
+	FOREIGN KEY (classId) REFERENCES Classes (classId),
+	PRIMARY KEY (userId, classId)
+);
+CREATE TABLE Assignments
+(
+	classId INT,
+	assignmentName VARCHAR(20) NOT NULL,
+	numPoints INT,
+	FOREIGN KEY (classId) REFERENCES Classes (classId),
+	PRIMARY KEY (classId, assignmentName),
+	INDEX(assignmentName)
+);
+CREATE TABLE AssignmentGrades
+(
+	classId INT,
+	assignmentName VARCHAR(20) NOT NULL,
+	studentId INT,
+	points INT,
+	FOREIGN KEY (classId) REFERENCES Classes (classId),
+	FOREIGN KEY (assignmentName) REFERENCES Assignments (assignmentName),
+	FOREIGN KEY (studentId) REFERENCES Users (userId),
+	PRIMARY KEY (classId, assignmentName, studentId),
+	CHECK (assignmentName IN (SELECT assignmentName FROM Assignments))	
+);

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - jacobpc@cs.okstate.edu" uuid="1875acb5-454a-4d78-8fe6-354046f61592">
+    <database-info product="MySQL" version="5.5.37-MariaDB-wsrep" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="jacobpc"/>
+    <table name="AssignmentGrades" schema="" catalog="jacobpc" type="TABLE">
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="assignmentName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="studentId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="points" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="classId,assignmentName,studentId"/>
+      <foreign-key name="AssignmentGrades_ibfk_1" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="AssignmentGrades_ibfk_2" columns="assignmentName" ref-table="Assignments" ref-schema="" ref-catalog="jacobpc" ref-columns="assignmentName" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="AssignmentGrades_ibfk_3" columns="studentId" ref-table="Users" ref-schema="" ref-catalog="jacobpc" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Assignments" schema="" catalog="jacobpc" type="TABLE">
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="assignmentName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="numPoints" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="classId,assignmentName"/>
+      <foreign-key name="Assignments_ibfk_1" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="AssignmentGrades_ibfk_2" table="AssignmentGrades" schema="" catalog="jacobpc" columns="assignmentName"/>
+      <index name="assignmentName" unique="false" columns="assignmentName"/>
+    </table>
+    <table name="Classes" schema="" catalog="jacobpc" type="TABLE">
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="className" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="classNum" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sectionNum" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="semester" sqlType="ENUM" precision="6" scale="0" nullable="true" jdbcType="1"/>
+      <column name="year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="creditHours" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="maxEnrollment" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="open" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="finished" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="classId"/>
+      <exported-key name="AssignmentGrades_ibfk_1" table="AssignmentGrades" schema="" catalog="jacobpc" columns="classId"/>
+      <exported-key name="Assignments_ibfk_1" table="Assignments" schema="" catalog="jacobpc" columns="classId"/>
+      <exported-key name="Prerequisites_ibfk_1" table="Prerequisites" schema="" catalog="jacobpc" columns="requiringClassNum"/>
+      <exported-key name="Prerequisites_ibfk_2" table="Prerequisites" schema="" catalog="jacobpc" columns="requiredClassNum"/>
+      <exported-key name="Takes_ibfk_2" table="Takes" schema="" catalog="jacobpc" columns="classId"/>
+      <exported-key name="Teaches_ibfk_2" table="Teaches" schema="" catalog="jacobpc" columns="classId"/>
+      <index name="classNum" unique="false" columns="classNum"/>
+    </table>
+    <table name="Instructors" schema="" catalog="jacobpc" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="department" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tenure" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <foreign-key name="Instructors_ibfk_1" columns="userId" ref-table="Users" ref-schema="" ref-catalog="jacobpc" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Prerequisites" schema="" catalog="jacobpc" type="TABLE">
+      <column name="requiringClassNum" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="requiredClassNum" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="requiringClassNum,requiredClassNum"/>
+      <foreign-key name="Prerequisites_ibfk_1" columns="requiringClassNum" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classNum" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Prerequisites_ibfk_2" columns="requiredClassNum" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classNum" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Students" schema="" catalog="jacobpc" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="major" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <foreign-key name="Students_ibfk_1" columns="userId" ref-table="Users" ref-schema="" ref-catalog="jacobpc" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Takes" schema="" catalog="jacobpc" type="TABLE">
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="grade" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="userId,classId"/>
+      <foreign-key name="Takes_ibfk_1" columns="userId" ref-table="Users" ref-schema="" ref-catalog="jacobpc" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Takes_ibfk_2" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Teaches" schema="" catalog="jacobpc" type="TABLE">
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="userId,classId"/>
+      <foreign-key name="Teaches_ibfk_1" columns="userId" ref-table="Users" ref-schema="" ref-catalog="jacobpc" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Teaches_ibfk_2" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Users" schema="" catalog="jacobpc" type="TABLE">
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="userName" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role" sqlType="ENUM" precision="10" scale="0" nullable="true" jdbcType="1"/>
+      <column name="salt" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="passwordHash" sqlType="VARCHAR" precision="256" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <exported-key name="AssignmentGrades_ibfk_3" table="AssignmentGrades" schema="" catalog="jacobpc" columns="studentId"/>
+      <exported-key name="Instructors_ibfk_1" table="Instructors" schema="" catalog="jacobpc" columns="userId"/>
+      <exported-key name="Students_ibfk_1" table="Students" schema="" catalog="jacobpc" columns="userId"/>
+      <exported-key name="Takes_ibfk_1" table="Takes" schema="" catalog="jacobpc" columns="userId"/>
+      <exported-key name="Teaches_ibfk_1" table="Teaches" schema="" catalog="jacobpc" columns="userId"/>
+      <index name="userName" unique="true" columns="userName"/>
+    </table>
+  </data-source>
+</component>

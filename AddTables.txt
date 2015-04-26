@@ -1,0 +1,75 @@
+CREATE TABLE Students
+(
+	name VARCHAR(30) NOT NULL,
+	userId INT PRIMARY KEY,
+	major VARCHAR(20),
+	year INT,
+	FOREIGN KEY (userId) REFERENCES Users (userId) ON DELETE CASCADE
+);
+CREATE TABLE Instructors
+(
+	name VARCHAR(30) NOT NULL,
+	userId INT PRIMARY KEY,
+	department VARCHAR(20),
+	tenure BOOLEAN NOT NULL,
+	FOREIGN KEY (userId) REFERENCES Users (userId) ON DELETE CASCADE
+);
+CREATE TABLE Classes
+(
+	classId INT PRIMARY KEY,
+	className VARCHAR(20),
+	classNum VARCHAR(20),
+	sectionNum INT NOT NULL,
+	semester ENUM('fall', 'spring', 'summer'),
+	year INT,
+	creditHours INT,
+	maxEnrollment INT,
+	open BOOLEAN NOT NULL,
+	finished BOOLEAN NOT NULL,
+	INDEX(classNum)
+);
+CREATE TABLE Teaches
+(
+	userId INT,
+	classId INT,
+	FOREIGN KEY (userId) REFERENCES Users (userId) ON DELETE CASCADE,
+	FOREIGN KEY (classId) REFERENCES Classes (classId) ON DELETE CASCADE,
+	PRIMARY KEY (userId, classId)
+);
+CREATE TABLE Prerequisites
+(
+	requiringClassNum VARCHAR(20),
+	requiredClassNum VARCHAR(20),
+	FOREIGN KEY (requiringClassNum) REFERENCES Classes (classNum) ON DELETE CASCADE,
+	FOREIGN KEY (requiredClassNum) REFERENCES Classes (classNum) ON DELETE CASCADE,
+	PRIMARY KEY (requiringClassNum, requiredClassNum)
+);
+CREATE TABLE Takes
+(
+	userId INT,
+	classId INT,
+	grade CHAR,
+	FOREIGN KEY (userId) REFERENCES Users (userId) ON DELETE CASCADE,
+	FOREIGN KEY (classId) REFERENCES Classes (classId) ON DELETE CASCADE,
+	PRIMARY KEY (userId, classId)
+);
+CREATE TABLE Assignments
+(
+	classId INT,
+	assignmentName VARCHAR(20),
+	numPoints INT,
+	FOREIGN KEY (classId) REFERENCES Classes (classId) ON DELETE CASCADE,
+	PRIMARY KEY (classId, assignmentName),
+	INDEX (assignmentName)
+);
+CREATE TABLE AssignmentGrades
+(
+	classId INT,
+	assignmentName VARCHAR(20),
+	studentId INT,
+	points INT,
+	FOREIGN KEY (classId) REFERENCES Classes (classId) ON DELETE CASCADE,
+	FOREIGN KEY (assignmentName) REFERENCES Assignments (assignmentName) ON DELETE CASCADE,
+	FOREIGN KEY (studentId) REFERENCES Users (userId) ON DELETE CASCADE,
+	PRIMARY KEY (classId, assignmentName, studentId)
+);

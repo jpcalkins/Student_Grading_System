@@ -1,0 +1,8 @@
+DROP TABLE AssignmentGrades;
+DROP TABLE Assignments;
+DROP TABLE Takes;
+DROP TABLE Prerequisites;
+DROP TABLE Teaches;
+DROP TABLE Classes;
+DROP TABLE Instructors;
+DROP TABLE Students;
