@@ -6,11 +6,6 @@ function findUser(){
     $.ajax({
         data: 'searchText=' + input,
         url: 'Search.php',
-        method: 'POST',
-        success: function(msg) {
-            var name = JSON.parse(msg);
-            $("p").text(name);
-        }
-
+        method: 'POST'
     })
 }
