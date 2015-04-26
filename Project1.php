@@ -13,6 +13,8 @@ function multiQuery($mysqli, $query){
         echo "Success!";
     } else {
         echo "Error: " . mysqli_error($mysqli);
+        back();
+        home();
         exit(0);
     }
 }
