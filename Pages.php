@@ -20,7 +20,8 @@ function adminHome(){
     <a href="Signout.php">Signout</a><br>
     <a href="DropUserPrompt.php">Drop User</a>
     <a href="ChangePasswordPrompt.php">Change Password</a>
-    <a href="Search.php">Search</a>';
+    <a href="Search.php">Search</a>
+    <a href="DisplayStudents.php">Display Students</a>';
     adminQuery();
 }
 function instHome(){
