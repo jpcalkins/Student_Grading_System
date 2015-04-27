@@ -6,7 +6,6 @@
  * Time: 6:09 PM
  */
 include 'Project1.php';
-session_start();
 css();
 signout();
 echo 'You have been signed out.';

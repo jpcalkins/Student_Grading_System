@@ -17,10 +17,10 @@ function adminHome(){
     <form action="PopulateTables.php" method="post">
         <input type="submit" name="populateTables" value="Populate Tables">
     </form><br>
-    <a href="AddUserPrompt.php">Add Users</a><br>
+    <a href="AddUser.php">Add Users</a><br>
     <a href="Signout.php">Signout</a><br>
     <a href="DropUserPrompt.php">Drop User</a>
-    <a href="ChangePasswordPrompt.php">Change Password</a>
+    <a href="ChangePassword.php">Change Password</a>
     <a href="Search.php">Search</a>
     <a href="DisplayStudents.php">Display Students</a>
     <a href="DisplayInstructors.php">Display Instructors</a>';
