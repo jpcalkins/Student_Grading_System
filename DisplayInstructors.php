@@ -10,7 +10,7 @@ session_start();
 css();
 checkSession(array('admin'));
 if(count($_POST) == 0){
-    printTable(sqlLogin(),'SELECT * FROM Instructors');
+    printTable('SELECT * FROM Instructors');
 } elseif(count($_POST) == 1){
     $userId = $_POST['userId'];
     $query = "SELECT DISTINCT name AS Name, classNum AS 'Class Number', className AS 'Class Name', sectionNum AS 'Section Number', creditHours AS 'Credit Hours',semester AS Semester, year AS Year
@@ -20,7 +20,7 @@ FROM Instructors
 	JOIN Classes
 		ON Classes.classId = Teaches.classId
 WHERE Instructors.userId = '{$userId}'";
-    printTable(sqlLogin(),$query);
+    printTable($query);
 } elseif(count($_POST) == 2){
     $userId = $_POST['userId'];
     $classId = $_POST['classId'];

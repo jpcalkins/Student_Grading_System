@@ -10,6 +10,6 @@ session_start();
 css();
 checkSession();
 $query = $_POST['queryText'];
-printTable(sqlLogin(), $query);
+printTable($query);
 adminQuery();
 home();

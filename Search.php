@@ -25,7 +25,7 @@ UNION ALL
 SELECT userId, name, role
 FROM Students NATURAL JOIN Users
 WHERE name LIKE "%'.$searchText.'%"';
-    printTable(sqlLogin(), $query);
+    printTable($query);
     echo '<form action="Search.php" method="post">
             Enter part or all of name to search for:<br>
             <input type="text" name="searchText">

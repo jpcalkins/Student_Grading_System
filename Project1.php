@@ -23,7 +23,8 @@ function adminHome(){
     <a href="ChangePassword.php">Change Password</a>
     <a href="Search.php">Search</a>
     <a href="DisplayStudents.php">Display Students</a>
-    <a href="DisplayInstructors.php">Display Instructors</a>';
+    <a href="DisplayInstructors.php">Display Instructors</a>
+    <a href="AlterClasses.php">View Classes</a>';
     adminQuery();
 }
 function instHome(){
@@ -108,8 +109,8 @@ function newSession($role, $userName, $password){
     $_SESSION['userName'] = $userName;
     $_SESSION['password'] = $password;
 }
-function printTable($mysqli, $query){
-    $result = $mysqli->query($query);
+function printTable($query){
+    $result = sqlLogin()->query($query);
     echo "<pre>\n";
     echo $query;
     echo "\n\n</pre><hr>\n";

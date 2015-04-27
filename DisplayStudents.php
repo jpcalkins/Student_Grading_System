@@ -10,7 +10,7 @@ session_start();
 css();
 checkSession(array('admin'));
 if(count($_POST) == 0){
-    printTable(sqlLogin(),'SELECT * FROM Students');
+    printTable('SELECT * FROM Students');
     $dropdown = '<form action="DisplayStudents.php" method="post">
         Select student to display:<br><select name="userId">';
     $query = 'SELECT userId, name FROM Students GROUP BY userId ASC';
@@ -30,6 +30,6 @@ FROM Students
 	JOIN Classes
 		ON Classes.classId = Takes.classId
 WHERE Students.userId = '{$userId}'";
-    printTable(sqlLogin(),$query);
+    printTable($query);
 }
 home();

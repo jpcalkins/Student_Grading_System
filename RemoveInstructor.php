@@ -20,7 +20,7 @@ if(count($_POST) == 0){
 }
 home();
 function removeTeacher(){
-    printTable(sqlLogin(),'SELECT userId, name, classId, className FROM Instructors NATURAL JOIN Teaches NATURAL JOIN Classes');
+    printTable('SELECT userId, name, classId, className FROM Instructors NATURAL JOIN Teaches NATURAL JOIN Classes');
     $dropdown = '<form action="RemoveInstructor.php" method="post">
         Select Instructor:<br><select name="userId">';
     $query = 'SELECT userId, name FROM Instructors GROUP BY userId ASC';

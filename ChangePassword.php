@@ -10,7 +10,7 @@ session_start();
 css();
 checkSession(array('admin'));
 if(count($_POST) == 0){
-    printTable(sqlLogin(), 'SELECT userId, userName FROM Users GROUP BY userId ASC');
+    printTable('SELECT userId, userName FROM Users GROUP BY userId ASC');
     echo '<form action="ChangePassword.php" method="post">
     User Id:<br>
     <input type="text" name="userId">
