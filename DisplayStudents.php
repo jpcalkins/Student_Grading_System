@@ -23,7 +23,7 @@ if(count($_POST) == 0){
     echo $dropdown;
 } else{
     $userId = $_POST['userId'];
-    $query = "SELECT DISTINCT name AS Name, classNum AS 'Class Number', className AS 'Class Name', grade
+    $query = "SELECT DISTINCT name AS Name, classNum AS 'Class Number', className AS 'Class Name', creditHours AS 'Credit Hours', grade
 FROM Students
 	JOIN Takes
 		ON Takes.userId = Students.userId

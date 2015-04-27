@@ -21,7 +21,8 @@ function adminHome(){
     <a href="DropUserPrompt.php">Drop User</a>
     <a href="ChangePasswordPrompt.php">Change Password</a>
     <a href="Search.php">Search</a>
-    <a href="DisplayStudents.php">Display Students</a>';
+    <a href="DisplayStudents.php">Display Students</a>
+    <a href="DisplayInstructors.php">Display Instructors</a>';
     adminQuery();
 }
 function instHome(){
