@@ -33,6 +33,7 @@ WHERE requiringClassNum='{$classNum}'";
 }
 addClass();
 listPreReqs();
+echo '<br><a href="AlterPrerequisites.php">Alter Prerequisites</a><br>';
 home();
 
 function addClass(){
