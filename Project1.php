@@ -76,6 +76,7 @@ function checkSession($required = array('student', 'admin', 'instructor')){
             <button onclick="history.go(-1);">Back</button>';
         exit(0);
     }
+    $_SESSION['time'] = time();
 }
 function generateSalt(){
     $salt = openssl_random_pseudo_bytes(16, $cstrong);
@@ -144,7 +145,7 @@ function siteLogin(){
     $mysqli = sqlLogin();
     $userName = $_POST['username'];
     $password = $_POST['password'];
-    $query = 'SELECT role, salt, passwordHash FROM Users WHERE userName = "'.$userName.'"';
+    $query = "SELECT role, salt, passwordHash FROM Users WHERE userName = '{$userName}'";
     $result = $mysqli->query($query);
     $row = $result->fetch_row();
     $role = $row[0];
