@@ -23,8 +23,16 @@ if(count($_POST) == 10){
     $query = "INSERT INTO Classes (classId, className, classNum, sectionNum, semester, year, creditHours, maxEnrollment, open, finished)
 VALUES ({$classId}, '{$className}', '{$classNum}', {$sectionNum}, '{$semester}', {$year}, {$creditHours}, {$maxEnrollment}, {$open}, {$finished})";
     multiQuery(sqlLogin(), $query);
+}elseif(count($_POST) == 1){
+    $classNum = $_POST['classNum'];
+    $query = "SELECT requiringClassNum AS Class, requiredClassNum AS Prerequisites, className AS 'Class Name'
+FROM Prerequisites JOIN Classes
+  ON Classes.classNum = Prerequisites.requiredClassNum
+WHERE requiringClassNum='{$classNum}'";
+    printTable($query);
 }
 addClass();
+listPreReqs();
 home();
 
 function addClass(){
@@ -51,5 +59,23 @@ function addClass(){
     <input type="text" name="open">
     <br>Finished(1 for yes, 0 for no):<br>
     <input type="text" name="finished">
-    <input type="submit">';
+    <br><input type="submit"></form>';
+}
+function addPreReqs(){
+    echo '<form action="AlterClasses.php" method="post">
+    Class:<br>
+    <select name="requiringClassNum">';
+    $query = 'SELECT classNum, className FROM Classes GROUP BY classNum ASC';
+}
+function listPreReqs(){
+    $dropdown = '<br><form action="AlterClasses.php" method="post">
+        Select class to display prerequisites:<br><select name="classNum">';
+    $query = 'SELECT classNum, className FROM Classes GROUP BY classNum ASC';
+    $result = sqlLogin()->query($query);
+    foreach($result as $row){
+        $dropdown .= "\r\n<option value='{$row['classNum']}'>{$row['classNum']}-{$row['className']}</option>";
+
+    }
+    $dropdown .= "\r\n</select><input type='submit'></form>";
+    echo $dropdown;
 }
