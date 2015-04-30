@@ -62,12 +62,6 @@ function addClass(){
     <input type="text" name="finished">
     <br><input type="submit"></form>';
 }
-function addPreReqs(){
-    echo '<form action="AlterClasses.php" method="post">
-    Class:<br>
-    <select name="requiringClassNum">';
-    $query = 'SELECT classNum, className FROM Classes GROUP BY classNum ASC';
-}
 function listPreReqs(){
     $dropdown = '<br><form action="AlterClasses.php" method="post">
         Select class to display prerequisites:<br><select name="classNum">';

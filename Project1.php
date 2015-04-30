@@ -33,7 +33,8 @@ function instHome(){
 function studHome(){
     echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Student</h2>
     <br><a href="ChangePassword.php">Change Password</a>
-    <br><a href="Signout.php">Signout</a><br>';
+    <br><a href="Signout.php">Signout</a>
+    <br><a href="Enrollment.php">Alter Classes</a><br>';
 }
 
 
@@ -99,7 +100,7 @@ function home(){
 }
 function multiQuery($mysqli, $query){
     if (mysqli_multi_query($mysqli, $query)) {
-        echo "Success!";
+        echo "\nSuccess!";
     } else {
         echo "Error: " . mysqli_error($mysqli);
         back();
