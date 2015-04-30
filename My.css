@@ -12,12 +12,9 @@ li {
 
 a {
     color: black;
-    display: block;
-    padding-right: 20px;
     font-weight: bold;
     text-decoration: none;
-    font-family: Comic Sans MS;
-    padding-bottom: 20px;
+    font-family: Comic Sans MS, sans-serif;
 }
 body{
     background-image: url("http://www.farmsafetyforjustkids.org/images/fs4jk-background.jpg");
