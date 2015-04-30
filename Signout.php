@@ -7,5 +7,7 @@
  */
 include 'Project1.php';
 css();
+session_start();
 signout();
 echo 'You have been signed out.';
+var_dump($_SESSION);

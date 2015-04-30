@@ -31,14 +31,12 @@ function instHome(){
     echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Instructor</h2>';
 }
 function studHome(){
-    echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Student</h2>';
+    echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Student</h2>
+    <br><a href="ChangePassword.php">Change Password</a>
+    <br><a href="Signout.php">Signout</a><br>';
 }
-function home(){
-    echo '<a href="Homepage.php">Home</a>';
-}
-function css(){
-    echo '<head><link rel="stylesheet" href="My.css">';
-}
+
+
 
 //Functional Stuff
 function addUser($userName, $userId, $role, $password){
@@ -78,6 +76,9 @@ function checkSession($required = array('student', 'admin', 'instructor')){
     }
     $_SESSION['time'] = time();
 }
+function css(){
+    echo '<head><link rel="stylesheet" href="My.css">';
+}
 function generateSalt(){
     $salt = openssl_random_pseudo_bytes(16, $cstrong);
     $salt = bin2hex($salt);
@@ -86,6 +87,9 @@ function generateSalt(){
 function hashPass($password, $salt){
     $passSalt = $password . $salt;
     return hash('sha256', $passSalt);
+}
+function home(){
+    echo '<a href="Homepage.php">Home</a>';
 }
 function multiQuery($mysqli, $query){
     if (mysqli_multi_query($mysqli, $query)) {
@@ -139,7 +143,6 @@ function printTable($query){
 function signout(){
     session_unset();
     session_destroy();
-    header("Location: Home.html");
 }
 function siteLogin(){
     $mysqli = sqlLogin();
