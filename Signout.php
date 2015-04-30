@@ -10,4 +10,3 @@ css();
 session_start();
 signout();
 echo 'You have been signed out.';
-var_dump($_SESSION);

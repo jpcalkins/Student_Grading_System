@@ -75,6 +75,12 @@ function checkSession($required = array('student', 'admin', 'instructor')){
         exit(0);
     }
     $_SESSION['time'] = time();
+    if($_SESSION['role'] == 'student'){
+        $query = "SELECT * FROM Students WHERE userId='{$_SESSION['userId']}'";
+        $result = sqlLogin()->query($query);
+        $row = $result->fetch_array(MYSQL_ASSOC);
+        echo "<pre>Name: {$row['name']}   User Id: {$row['userId']}   Major: {$row['major']}  Year: {$row['year']}</pre>";
+    }
 }
 function css(){
     echo '<head><link rel="stylesheet" href="My.css">';
@@ -109,10 +115,14 @@ function newSession($role, $userName, $password){
         echo('timeout');
         exit(0);
     }
+    $query = "SELECT userId FROM Users WHERE userName='{$userName}' AND role='{$role}'";
+    $result = sqlLogin()->query($query);
+    $row = $result->fetch_array(MYSQL_ASSOC);
     $_SESSION['time'] = time();
     $_SESSION['role'] = $role;
     $_SESSION['userName'] = $userName;
     $_SESSION['password'] = $password;
+    $_SESSION['userId'] = $row['userId'];
 }
 function printTable($query){
     $result = sqlLogin()->query($query);

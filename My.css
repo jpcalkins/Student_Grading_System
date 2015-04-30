@@ -28,3 +28,12 @@ body{
     float: left;
     width: 50%;
 }
+pre{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Comic Sans MS, sans-serif;
+}
+h3{
+    display: inline;
+}
