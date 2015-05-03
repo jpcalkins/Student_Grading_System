@@ -42,3 +42,4 @@ WHERE studentId = {$_SESSION['userId']} AND Assignments.classId = {$_POST['class
     $jsonString = json_encode($jsonString);
     echo $jsonString;
 }
+home();

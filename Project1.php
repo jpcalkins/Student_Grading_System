@@ -28,13 +28,16 @@ function adminHome(){
     adminQuery();
 }
 function instHome(){
-    echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Instructor</h2>';
+    echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Instructor</h2>
+    <br><a href="Courses.php">View Courses</a>
+    <br><a href="Signout.php">Signout</a>';
 }
 function studHome(){
     echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Student</h2>
     <br><a href="ChangePassword.php">Change Password</a>
-    <br><a href="Signout.php">Signout</a>
-    <br><a href="Enrollment.php">View Classes</a><br>';
+    <br><a href="Assignments.php">View Assignments</a>
+    <br><a href="Enrollment.php">View Classes</a>
+    <br><a href="Signout.php">Signout</a>';
 }
 
 
@@ -81,6 +84,11 @@ function checkSession($required = array('student', 'admin', 'instructor')){
         $result = sqlLogin()->query($query);
         $row = $result->fetch_array(MYSQL_ASSOC);
         echo "<pre>Name: {$row['name']}   User Id: {$row['userId']}   Major: {$row['major']}  Year: {$row['year']}</pre>";
+    }elseif($_SESSION['role'] == 'instructor'){
+        $query = "SELECT * FROM Instructors WHERE userId={$_SESSION['userId']}";
+        $result = sqlLogin()->query($query);
+        $row = $result->fetch_array(MYSQL_ASSOC);
+        echo "<pre>Name: {$row['name']}    User Id: {$row['userId']}    Department: {$row['department']}</pre>";
     }
 }
 function css(){
