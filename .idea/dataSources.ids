@@ -22,7 +22,7 @@
       <column name="assignmentName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="numPoints" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="classId,assignmentName"/>
-      <foreign-key name="Assignments_ibfk_1" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Assignments_ibfk_1" columns="classId" ref-table="Classes" ref-schema="" ref-catalog="jacobpc" ref-columns="classId" update-rule="3" delete-rule="0" deferrability="2"/>
       <exported-key name="AssignmentGrades_ibfk_2" table="AssignmentGrades" schema="" catalog="jacobpc" columns="assignmentName"/>
       <index name="assignmentName" unique="false" columns="assignmentName"/>
     </table>
