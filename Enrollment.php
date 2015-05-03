@@ -9,6 +9,10 @@ include 'Project1.php';
 session_start();
 css();
 checkSession(array('student'));
+$query = "SELECT classNum AS 'Class Number', creditHours AS 'Credit Hours', className AS 'Class Name', concat(semester, ' ', year) AS Semester, grade AS Grade
+FROM Classes NATURAL JOIN Takes
+WHERE userId={$_SESSION['userId']}";
+printTable($query);
 if(count($_POST) == 0){
     $dropdown = "<form action='Enrollment.php' method='post'>
     Add Class:<br>

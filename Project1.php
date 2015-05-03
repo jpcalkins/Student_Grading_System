@@ -34,7 +34,7 @@ function studHome(){
     echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Student</h2>
     <br><a href="ChangePassword.php">Change Password</a>
     <br><a href="Signout.php">Signout</a>
-    <br><a href="Enrollment.php">Alter Classes</a><br>';
+    <br><a href="Enrollment.php">View Classes</a><br>';
 }
 
 
