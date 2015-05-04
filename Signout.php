@@ -10,3 +10,4 @@ css();
 session_start();
 signout();
 echo 'You have been signed out.';
+echo '<br><a href="Home.html">Login Again</a>';

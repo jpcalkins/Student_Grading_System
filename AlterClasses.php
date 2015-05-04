@@ -56,9 +56,9 @@ function addClass(){
     <input type="text" name="creditHours">
     <br>Maximum Number of Students:<br>
     <input type="text" name="maxEnrollment">
-    <br>Open(1 for yes, 0 for no):<br>
+    <br>Open(True or false):<br>
     <input type="text" name="open">
-    <br>Finished(1 for yes, 0 for no):<br>
+    <br>Finished(True or false):<br>
     <input type="text" name="finished">
     <br><input type="submit"></form>';
 }

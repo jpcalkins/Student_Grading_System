@@ -29,3 +29,4 @@ if(count($_POST) == 0){
     $password = $_POST['password'];
     addUser($userName, $userId, $role, $password);
 }
+home();

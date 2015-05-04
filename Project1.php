@@ -17,15 +17,15 @@ function adminHome(){
     <form action="PopulateTables.php" method="post">
         <input type="submit" name="populateTables" value="Populate Tables">
     </form><br>
-    <a href="AddUser.php">Add Users</a><br>
-    <a href="Signout.php">Signout</a><br>
-    <a href="DropUserPrompt.php">Drop User</a>
-    <a href="ChangePassword.php">Change Password</a>
-    <a href="Search.php">Search</a>
-    <a href="DisplayStudents.php">Display Students</a>
-    <a href="DisplayInstructors.php">Display Instructors</a>
-    <a href="AlterClasses.php">View Classes</a>';
+    <br><a href="AddUser.php">Add Users</a>
+    <br><a href="DropUserPrompt.php">Drop User</a>
+    <br><a href="ChangePassword.php">Change Password</a>
+    <br><a href="Search.php">Search</a>
+    <br><a href="DisplayStudents.php">Display Students</a>
+    <br><a href="DisplayInstructors.php">Display Instructors</a>
+    <br><a href="AlterClasses.php">View Classes</a>';
     adminQuery();
+    echo '<br><a href="Signout.php">Signout</a>';
 }
 function instHome(){
     echo '<h1>Jacob Calkins</h1><br><h2>Username: '.$_SESSION['userName'].'<br>Instructor</h2>

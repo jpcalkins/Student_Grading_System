@@ -27,9 +27,9 @@ WHERE Instructors.userId = '{$userId}'";
     $query = "INSERT INTO Teaches (userId, classId) VALUES ('{$userId}', '{$classId}')";
     multiQuery(sqlLogin(), $query);
 }
-echo '<a href="RemoveInstructor.php">Remove Instructor From Class</a>';
 displayTeacher();
 assignTeacher();
+echo '<a href="RemoveInstructor.php">Remove Instructor From Class</a>';
 home();
 
 
