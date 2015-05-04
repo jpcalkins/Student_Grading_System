@@ -107,10 +107,10 @@ function updateFinalGrade(grade){
         url: 'Grading.php',
         method: 'POST',
         success: function (msg) {
-            document.getElementById('textBox').innerHTML = "SUCCESS!";
+            document.getElementById('textBox').innerHTML = msg;
         },
         error: function(msg){
-            document.getElementById('textBox').innerHTML = "FAIL!";
+            document.getElementById('textBox').innerHTML = msg;
         }
     });
 }

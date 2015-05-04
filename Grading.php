@@ -43,7 +43,7 @@ if(count($_POST) == 0){
     $dropdown .= "\r\n</select>";
     echo "{$dropdown}<br<br><br><div id='listPrint'></div><div id='textBox'></div>";
 
-}elseif(count($_POST) == 3){
+}elseif(count($_POST) == 3 && !isset($_POST['grade'])){
     $postData = explode('|', $_POST['assignmentName']);
     $classId = $postData[1];
     $assignmentName = $postData[0];
