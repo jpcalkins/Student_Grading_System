@@ -40,6 +40,7 @@ if($_SESSION['role'] == 'student') {
         }
         $jsonString = json_encode($jsonString);
         echo $jsonString;
+        exit();
     }
 }elseif($_SESSION['role'] == 'instructor'){
     if(count($_POST) == 0){
@@ -65,6 +66,7 @@ if($_SESSION['role'] == 'student') {
         }
         $jsonString = json_encode($jsonString);
         echo $jsonString;
+        exit();
     }elseif(isset($_POST['assignmentName'])){
         $query = "SELECT userId, name, concat(points, '/', numPoints) AS Grade
           FROM Assignments NATURAL JOIN AssignmentGrades JOIN Students
@@ -78,5 +80,7 @@ if($_SESSION['role'] == 'student') {
         }
         $jsonString = json_encode($jsonString);
         echo $jsonString;
+        exit();
     }
 }
+home();
