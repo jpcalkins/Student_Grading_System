@@ -69,7 +69,7 @@ CREATE TABLE AssignmentGrades
 	studentId INT,
 	points INT,
 	FOREIGN KEY (classId) REFERENCES Classes (classId) ON DELETE CASCADE,
-	FOREIGN KEY (assignmentName) REFERENCES Assignments (assignmentName) ON DELETE CASCADE,
+	FOREIGN KEY (assignmentName) REFERENCES Assignments (assignmentName) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (studentId) REFERENCES Users (userId) ON DELETE CASCADE,
 	PRIMARY KEY (classId, assignmentName, studentId)
 );
