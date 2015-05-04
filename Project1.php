@@ -32,6 +32,7 @@ function instHome(){
     <br><a href="Courses.php">View Courses</a>
     <br><a href="Assignments.php">View Assignments</a>
     <br><a href="AlterAssignments.php">Alter Assignments</a>
+    <br><a href="Grading.php">Grading</a>
     <br><a href="Signout.php">Signout</a>';
 }
 function studHome(){
