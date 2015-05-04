@@ -8,7 +8,7 @@
 include 'Project1.php';
 session_start();
 if($_SESSION['role'] == 'student') {
-    if (count($_POST) == 0) {
+    if(count($_POST) == 0) {
         css();
         checkSession(array('student'));
         echo "<script src='Project1.js'></script><script src='jquery-1.11.2.min.js'></script>";
@@ -22,6 +22,7 @@ if($_SESSION['role'] == 'student') {
         }
         $dropdown .= "\r\n</select>";
         echo "{$dropdown}<br<br><br><div id='tablePrint'></div>";
+
     }elseif(count($_POST) == 1) {
         $query = "SELECT SUM(points), SUM(numPoints)
     FROM  AssignmentGrades NATURAL JOIN Assignments
@@ -42,6 +43,7 @@ if($_SESSION['role'] == 'student') {
         echo $jsonString;
         exit();
     }
+
 }elseif($_SESSION['role'] == 'instructor'){
     if(count($_POST) == 0){
         css();
@@ -57,6 +59,7 @@ if($_SESSION['role'] == 'student') {
         }
         $dropdown .= "\r\n</select>";
         echo "{$dropdown}<br<br><br><div id='listPrint'></div><div id='tablePrint'></div>";
+
     }elseif(isset($_POST['classId'])){
         $query = "SELECT assignmentName FROM Assignments WHERE classId={$_POST['classId']}";
         $result = sqlLogin()->query($query);
@@ -67,6 +70,7 @@ if($_SESSION['role'] == 'student') {
         $jsonString = json_encode($jsonString);
         echo $jsonString;
         exit();
+
     }elseif(isset($_POST['assignmentName'])){
         $query = "SELECT userId, name, concat(points, '/', numPoints) AS Grade
           FROM Assignments NATURAL JOIN AssignmentGrades JOIN Students

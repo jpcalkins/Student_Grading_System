@@ -1,6 +1,8 @@
 /**
  * Created by Jacob on 5/3/15.
  */
+var univClassId;
+var univStudId;
 function showTable(classId){
     $.ajax({
         data: 'classId=' + classId,
@@ -70,6 +72,45 @@ function showAssignmentTable(assignmentName){
             }
             table += "</table>";
             document.getElementById('tablePrint').innerHTML = table;
+        }
+    });
+}
+function showClassList(classId){
+    univClassId = classId;
+    $.ajax({
+        data: 'classId=' + classId,
+        url: 'Grading.php',
+        method: 'POST',
+        success: function (msg) {
+            alert(msg);
+            try {
+                msg = JSON.parse(msg);
+            } catch (e) {
+                alert("Error generating table");
+                return;
+            }
+            var list = "Select Student:<br><select name='studentId' onchange='askForGrade(this.value)'>";
+            for(var i=0; i<msg.length; i++){
+                list += "\r\n<option value='"+msg[i][0]+"'>"+msg[i][0]+"-"+msg[i][1]+"</option>";
+            }
+            document.getElementById('listPrint').innerHTML = list;
+        }
+    });
+}
+function askForGrade(studentId){
+    univStudId = studentId;
+    document.getElementById('textBox').innerHTML = "<input type='text' onchange='updateFinalGrade(this.value)'>";
+}
+function updateFinalGrade(grade){
+    $.ajax({
+        data: {classId: univClassId, userId: univStudId, grade: grade},
+        url: 'Grading.php',
+        method: 'POST',
+        success: function (msg) {
+            document.getElementById('textBox').innerHTML = "SUCCESS!";
+        },
+        error: function(msg){
+            document.getElementById('textBox').innerHTML = "FAIL!";
         }
     });
 }
