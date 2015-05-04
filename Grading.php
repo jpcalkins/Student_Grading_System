@@ -36,4 +36,3 @@ if(count($_POST) == 0){
     $query = "INSERT INTO AssignmentGrades (classId, assignmentName, studentId, points) VALUE ({$classId}, '{$assignmentName}', {$_POST['studentId']}, {$_POST['points']})";
     multiQuery(sqlLogin(), $query);
 }
-home();

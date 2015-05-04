@@ -18,7 +18,6 @@ if(count($_POST) == 0){
     multiQuery(sqlLogin(), $query);
     removeTeacher();
 }
-home();
 function removeTeacher(){
     printTable('SELECT userId, name, classId, className FROM Instructors NATURAL JOIN Teaches NATURAL JOIN Classes');
     $dropdown = '<form action="RemoveInstructor.php" method="post">

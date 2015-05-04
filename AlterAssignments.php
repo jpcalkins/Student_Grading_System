@@ -84,4 +84,3 @@ elseif(count($_POST) == 1){
     $query = "DELETE FROM Assignments WHERE classId={$classId} AND assignmentName='{$assignmentName}'";
     multiQuery(sqlLogin(), $query);
 }
-home();

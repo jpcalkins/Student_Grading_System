@@ -112,6 +112,8 @@ function home(){
 function multiQuery($mysqli, $query){
     if (mysqli_multi_query($mysqli, $query)) {
         echo "\nSuccess!";
+        back();
+        home();
     } else {
         echo "Error: " . mysqli_error($mysqli);
         back();

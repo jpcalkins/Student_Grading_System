@@ -43,4 +43,3 @@ if(count($_POST) == 0){
     $query = "DELETE FROM Takes WHERE userId={$_SESSION['userId']} AND classId={$_POST['dropClass']}";
     multiQuery(sqlLogin(), $query);
 }
-home();
