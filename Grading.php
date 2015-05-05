@@ -66,3 +66,4 @@ if(count($_POST) == 0){
     $query = "UPDATE Takes SET grade='{$_POST['grade']}' WHERE userId={$_POST['userId']} AND classId={$_POST['classId']}";
     multiQuery(sqlLogin(), $query);
 }
+home();

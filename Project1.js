@@ -32,7 +32,7 @@ function showList(classId){
         url: 'Assignments.php',
         method: 'POST',
         success: function (msg) {
-            alert(msg);
+            //alert(msg);
             try {
                 msg = JSON.parse(msg);
             } catch (e) {
@@ -53,7 +53,6 @@ function showAssignmentTable(assignmentName){
         url: 'Assignments.php',
         method: 'POST',
         success: function (msg) {
-            alert(msg);
             if(msg.length == 0){
                 alert("No assignments in that class");
                 return;
@@ -82,7 +81,6 @@ function showClassList(classId){
         url: 'Grading.php',
         method: 'POST',
         success: function (msg) {
-            alert(msg);
             try {
                 msg = JSON.parse(msg);
             } catch (e) {
@@ -99,7 +97,7 @@ function showClassList(classId){
 }
 function askForGrade(studentId){
     univStudId = studentId;
-    document.getElementById('textBox').innerHTML = "<input type='text' onchange='updateFinalGrade(this.value)'>";
+    document.getElementById('textBox').innerHTML = "Enter Grade:<br><input type='text' onchange='updateFinalGrade(this.value)'>";
 }
 function updateFinalGrade(grade){
     $.ajax({

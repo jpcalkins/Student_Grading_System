@@ -53,10 +53,7 @@ if(count($_POST) == 0){
     <br><input type='submit'></form>";
     echo $dropdown;
 
-}elseif(count($_POST) == 3 && !isset($_POST['numPoints'])){
-    $query = "INSERT INTO Assignments (classId, assignmentName, numPoints) VALUES ({$_POST['classId']}, '{$_POST['assignmentName']}', {$_POST['numPoints']})";
-    multiQuery(sqlLogin(), $query);
-}elseif(isset($_POST['numPoints'])){
+}elseif(isset($_POST['newAssignmentName'])){
     $postData = explode('|', $_POST['assignmentName']);
     $classId = $postData[1];
     $assignmentName = $postData[0];
@@ -76,11 +73,15 @@ if(count($_POST) == 0){
           WHERE classId={$classId} AND assignmentName='{$assignmentName}'";
     }
     multiQuery(sqlLogin(), $query);
-}
-elseif(count($_POST) == 1){
+}elseif(count($_POST) == 3 && !strpos($_POST['numPoints'], '|')){
+    $query = "INSERT INTO Assignments (classId, assignmentName, numPoints) VALUES ({$_POST['classId']}, '{$_POST['assignmentName']}', {$_POST['numPoints']})";
+    multiQuery(sqlLogin(), $query);
+
+} elseif(count($_POST) == 1){
     $postData = explode('|', $_POST['assignmentName']);
     $classId = $postData[1];
     $assignmentName = $postData[0];
     $query = "DELETE FROM Assignments WHERE classId={$classId} AND assignmentName='{$assignmentName}'";
     multiQuery(sqlLogin(), $query);
 }
+home();
