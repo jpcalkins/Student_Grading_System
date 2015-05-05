@@ -10,7 +10,6 @@ css();
 session_start();
 if(!isset($_SESSION['role'])){
     siteLogin();
-    exit();
 } else{
     checkSession();
 }

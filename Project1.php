@@ -140,9 +140,9 @@ function newSession($role, $userName, $password){
 }
 function printTable($query){
     $result = sqlLogin()->query($query);
-    echo "<pre>\n";
-    echo $query;
-    echo "\n\n</pre><hr>\n";
+//    echo "<pre>\n";
+//    echo $query;
+//    echo "\n\n</pre><hr>\n";
     echo '<table border="2" cellPadding="3">';
     $row = $result->fetch_array(MYSQLI_ASSOC);
     if ($row) {
